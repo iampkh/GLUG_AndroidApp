@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/black"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_head_bg" >
+
+        <Button
+            android:id="@+id/home_btn"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/toggleButton2"
+            android:background="@drawable/home_button" />
+
+        <Button
+            android:id="@+id/logout"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/logout_button"
+            android:text=" " />
+
+        <TextView
+            android:id="@+id/feedlistText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/gnu_linux"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+
+    <ListView
+        android:layout_margin="10dp"
+        android:id="@+id/feedlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        
+        android:layout_below="@+id/relativeLayout1" >
+
+    </ListView>
+
+</RelativeLayout>

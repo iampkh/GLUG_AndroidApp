@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/welcome_screen_bg"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_head_bg" >
+
+        <Button
+            android:id="@+id/home_btn"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/toggleButton2"
+            android:background="@drawable/home_button" />
+
+        <Button
+            android:id="@+id/logout"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/logout_button"
+            android:text=" " />
+
+        <TextView
+            android:id="@+id/glugDetText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/gnu_linux"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+
+    <TableRow
+        android:id="@+id/followCheckboxContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/relativeLayout1" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="follow"
+            android:textColor="#ffffff" 
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="italic" />
+
+        <ImageView
+            android:id="@+id/followCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            
+            android:src="@drawable/check_box" />
+    </TableRow>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ready_to_buy_plan_bg"
+        android:layout_below="@+id/followCheckboxContainer" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            <TextView
+            android:id="@+id/aboutGlugText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="20dp"
+            android:text="@string/gnu_linux"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000" />
+
+            <LinearLayout
+                android:id="@+id/recentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+                 <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:layout_centerVertical="true"
+            android:text="Event Title"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000" />
+
+                 <ImageView
+                     android:id="@+id/imageView1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/search_line_partition" />
+
+                  <TextView
+            android:id="@+id/timeStamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:layout_centerVertical="true"
+            android:text="Date "
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000" />
+            </LinearLayout>
+            
+        </LinearLayout>
+    </ScrollView>
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+
+        <Button
+            android:id="@+id/getRecentBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="Get Recent " />
+
+        <Button
+            android:id="@+id/gotoPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="Go to Page" />
+    </TableRow>
+
+</RelativeLayout>

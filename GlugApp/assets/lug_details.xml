@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<LocationDetails>
+  <pondicherry>
+	<LUG>
+		<dbname>puduvaiglug</dbname>    
+ 		<name>Puduvai GLUG  </name>
+		<link>www.pglug.wordpress.com</link>
+		<feed>https://puduvaiglug.wordpress.com/feed/</feed>
+		
+	</LUG>
+	<LUG>
+		<dbname>smvecglug</dbname>
+		<name> SMVEC GLUG </name>
+		<link>www.SMVEC.wordpress.com </link>
+		<feed>https://puduvaiglug.wordpress.com/feed/</feed>
+	</LUG>
+
+</pondicherry>
+<villupuram>
+	<LUG>
+		<dbname>villupuramglug</dbname>
+		<name> Villupuram GLUG </name>
+		<link>www.VPM.wordpress.com </link>
+		<feed>https://puduvaiglug.wordpress.com/feed/</feed>
+	</LUG>
+</villupuram>
+<chennai>
+    <LUG>
+    	<dbname>ilugc</dbname>
+		<name> ILUGC </name>
+		<link>www.ilugc.wordpress.com </link>
+		<feed>https://puduvaiglug.wordpress.com/feed/</feed>
+	</LUG>
+</chennai>
+
+
+</LocationDetails>
+

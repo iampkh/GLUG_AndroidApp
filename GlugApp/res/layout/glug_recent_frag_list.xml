@@ -1,0 +1,29 @@
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:orientation="horizontal"
+    android:showDividers="middle"
+    
+    android:dividerPadding="8dp"
+    android:gravity="center">
+
+    <!-- Dummy text view that will display the name of a random country. -->
+    <TextView android:id="@android:id/text1"
+        style="?android:textAppearanceMedium"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp" />
+
+    <!-- A button that, when pressed, will delete this list item row from its container. -->
+    <ImageButton android:id="@+id/delete_button"
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_list_remove"
+        
+        android:contentDescription="@string/action_remove_item" />
+
+</LinearLayout>
