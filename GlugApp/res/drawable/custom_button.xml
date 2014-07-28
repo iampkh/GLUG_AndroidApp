@@ -4,20 +4,9 @@
    
     <stroke 
         android:width="2dp" 
-        android:color="#000000"/>
-    <gradient
-        android:startColor="#2e2e2e"
-        android:endColor="#6e6e6e"/>
+        android:color="#0101DF"/>
     <corners 
-        android:radius="10dp" />
-
-    <padding 
-        android:left="7dp"
-        android:right="7dp"
-        android:top="7dp"
-        android:bottom="7dp"/>
-    
- 	
+        android:radius="5dp" />
 
 
 
