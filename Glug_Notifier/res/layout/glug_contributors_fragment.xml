@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/white_bordre"
     android:layout_gravity="center" >
 
     <LinearLayout
@@ -32,12 +33,20 @@
             android:src="@drawable/camlogo" />
     </LinearLayout>
 
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:drawable/editbox_background"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        
+        
         android:text="Use camera to take picture with"/>
     <TextView
         android:id="@+id/textView2"
@@ -45,15 +54,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
       
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:text="&apos;PuduvaiGlug&apos;" />
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_below="@+id/textView2"
    
         android:layout_centerHorizontal="true"
         android:text="watermark" />
-
+</LinearLayout>
 </RelativeLayout>

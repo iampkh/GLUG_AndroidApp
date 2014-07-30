@@ -24,6 +24,7 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -33,6 +34,7 @@ import android.os.AsyncTask;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.glug.adapter.ViewPagerAdapter;
 import com.glug.db.DataBase;
 import com.glug.db.Feed;
 import com.glug.pkh.utils.GlugUtility;
@@ -41,10 +43,10 @@ import com.glug.ui.R;
 
 
 
-public class DataFetchService extends Service{
+public class MultipleDataFetchService{
 	String xml;
 	String parseddata=null;
-	String url_default="http://puduvaiglug.wordpress.com/feed/?paged=1",url="";
+	String url_default="http://puduvaiglug.wordpress.com/feed/?paged=",url="";
 	String finalstring=null;
 	Notification notification;
 	Intent intent;
@@ -57,89 +59,53 @@ public class DataFetchService extends Service{
 	String TABLE_NAME;
 	String Sitelink;
 	int mPrefPos=0;
+	int urlPageNo=0;
 	ArrayList<String> recentChangelist=new ArrayList<String>();
 	public static final String FROM_NOTIFICATION="FROMNOTIFICATION";
-
-	public boolean isDataModified=false;
+	Context mContext;
+	public ProgressDialog mProgressDialog;
 	
-@SuppressLint("WorldReadableFiles")
-@SuppressWarnings("deprecation")
-@Override
+	public boolean isDataModified=false;
+	public ViewPagerAdapter mViewpageAdapter;
+	
 
-public void onCreate() {
 
 // TODO Auto-generated method stub
 
 //Toast.makeText(this, "MyAlarmService.onCreate()", //Toast.LENGTH_LONG).show();
-	mPref=getSharedPreferences(GlugUtility.GLUG_SHARED_PREF_NAME, MODE_WORLD_READABLE);
 	
-
-}
-
-
-
-@Override
-
-public IBinder onBind(Intent intent) {
-
-// TODO Auto-generated method stub
-
-//Toast.makeText(this, "MyAlarmService.onBind()", //Toast.LENGTH_LONG).show();
-	//dataBase.closeDB();
 	
-return null;
-
-}
-
-
-
-@Override
-
-public void onDestroy() {
-
-// TODO Auto-generated method stub
-
-super.onDestroy();
-
-//Toast.makeText(this, "MyAlarmService.onDestroy()", //Toast.LENGTH_LONG).show();
-dataBase.closeDB();
-
-}
-
-
-
-@SuppressLint("WorldWriteableFiles")
-@SuppressWarnings("deprecation")
-@Override
-
-public void onStart(Intent intent, int startId) {
-
-// TODO Auto-generated method stub
-	super.onStart(intent, startId);
-	this.intent=intent;
-	//TABLE_NAME=intent.getStringExtra("dbname");
-	//Log.e("pkhtagnotifier","pkh table name on service="+TABLE_NAME);
-	//Sitelink=intent.getStringExtra("feedlink");
-
-	dataBase=new DataBase(getApplicationContext());
+	
+public MultipleDataFetchService(Context mContext,ViewPagerAdapter mViewpageAdapter){
+	dataBase=new DataBase(mContext);
+	this.mContext=mContext;
+	this.mViewpageAdapter=mViewpageAdapter;
 	dataBase.openDB();
-	//
-	mPref=getSharedPreferences(GlugUtility.GLUG_SHARED_PREF_NAME,Context.MODE_WORLD_WRITEABLE );
-	
-	//fetching the data from blog using MyFetching(); asyntask
-			MyFetching mf=new MyFetching();
-			mf.execute(url_default);
-	
-	//Toast.makeText(this, "MyAlarmService.onStart()", //Toast.LENGTH_LONG).show();
+	mPref=mContext.getSharedPreferences(GlugUtility.GLUG_SHARED_PREF_NAME, Context.MODE_WORLD_READABLE);
+}
+
+
+public void startFetchingData() {
+	// TODO Auto-generated method stub
+
+	mPref=mContext.getSharedPreferences(GlugUtility.GLUG_SHARED_PREF_NAME,Context.MODE_WORLD_WRITEABLE );
+	mProgressDialog=new ProgressDialog(mContext);
+	mProgressDialog.setMessage("Data is being fetched from server , Please wait  (The app will fetch the last 10 updates)");
+	mProgressDialog.setTitle("Downloading...");
+	mProgressDialog.setCancelable(false);
+	MyFetching mf=new MyFetching();
+	mf.execute(url_default+urlPageNo);
 
 }
+
+
 
 /*private int getPrefStartPosition(int pos) {
 	// TODO Auto-generated method stub
 	
 	for(int i=pos;i<tablenameLIst.size();i++){
 		if(mPref.getBoolean(tablenameLIst.get(i), false)){
-			//Log.e("pkhtag", "pkh current pref position is= "+i);
+			Log.e("pkhtag", "pkh current pref position is= "+i);
 			url=mPref.getString(tablenameLIst.get(i)+"_feed", url_default);
 			return i;
 			
@@ -150,17 +116,7 @@ public void onStart(Intent intent, int startId) {
 
 }*/
 
-@Override
 
-public boolean onUnbind(Intent intent) {
-
-// TODO Auto-generated method stub
-
-//Toast.makeText(this, "MyAlarmService.onUnbind()", //Toast.LENGTH_LONG).show();
-//	dataBase.closeDB();
-return super.onUnbind(intent);
-
-}
 public void setFeedData(String title,String id,String desc,String link,String tablename) {
 	// TODO Auto-generated method stub
 	//Log.d("pkhtagnotifier", "pkh---set title="+title+"--id="+id+"--desc="+desc+"--link="+link);
@@ -256,7 +212,7 @@ private void SendData(String tableName) {
 
 	
 @SuppressWarnings("deprecation")
-private void ShowNotification(String title) {
+private void ShowNotification(String title) {/*
 	// TODO Auto-generated method stub
 	if(!isFromActivity){
 		
@@ -277,7 +233,7 @@ private void ShowNotification(String title) {
 
 		notificationManager.notify(1, notification);
 	}
-}
+*/}
 
 public String getXmlFromUrl(String params) {
 	 xml = null;
@@ -320,7 +276,7 @@ class MyFetching extends AsyncTask<String, Void, Void>{
 			if(!params[0].replace(" ", "").equalsIgnoreCase(""))
 			{
 				parseddata=getXmlFromUrl(params[0]).replaceAll("&#8211;","-");
-				////Log.e("pkhtag", "pkh database on do in bg execute  is=");
+				//Log.e("pkhtag", "pkh database on do in bg execute  is=");
 			}
 		}catch(Exception e){
 			
@@ -335,31 +291,58 @@ class MyFetching extends AsyncTask<String, Void, Void>{
 		super.onPreExecute();
 		//pr.setMessage("loading");
 		//pr.show();
+		
+
+		
+		
+		if(!mProgressDialog.isShowing()){
+		mProgressDialog.show();
+		}
 
 	}
 	@Override
 	protected void onPostExecute(Void result) {
 		// TODO Auto-generated method stub
 		super.onPostExecute(result);
+		
 		try{
+			dataBase.deleteAllFeed(DataBase.MAIN_TABLE_NAME);
 		FeedParser parser=new FeedParser(parseddata);
 		
 		finalstring=parser.getParsedData();
 		//Log.d("TAGPKH", "pkh- finalstring="+title);
-		SendData(DataBase.MAIN_TABLE_NAME);
+		for(int i=parser.getFeedDataList().size();i>0;i--){
+			Feed feed=parser.getFeedDataList().get(i-1);
+			id=feed.getId();
+			title=feed.getTitle();
+			desc=feed.getDescription();
+			link=feed.getLink();
+			SendData(DataBase.MAIN_TABLE_NAME);
+		}
 		//-----reading all the weblink values
 	//	
-		
-		/* MyFetching mf=new MyFetching();
-			mf.execute(url);*/
+		Log.e("TAGPKH", "pkh- stoped service="+urlPageNo);
+		/*if(!(urlPageNo>10)){
+			urlPageNo=urlPageNo+1;
+		 MyFetching mf=new MyFetching();
+			mf.execute(url_default+urlPageNo);
 		//----end of reading all the weblink values
-			//Log.e("TAGPKH", "pkh- stoped service=");
+			
 		 	if(isDataModified)	
 			   {
-		 		ShowNotification(title);
+		 	//	ShowNotification(title);
 			   }
 		 	 id=null;title=null;desc=null;link=null;
-			   stopSelf();
+			  
+		}else{*/
+		mViewpageAdapter.notifyDataSetChanged();
+		   
+			if(mProgressDialog.isShowing()){
+				mProgressDialog.cancel();
+				}
+			dataBase.closeDB();
+		//}
+		
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -373,7 +356,9 @@ class FeedParser extends DefaultHandler{
 	boolean isitemvisited=false,isfetchedOnce=false;
 	String tempval;
 	StringBuilder tempstring=new StringBuilder();
+	ArrayList<Feed> parserFeed;
 	public FeedParser(String xmlString) {
+		parserFeed=new ArrayList<Feed>();
 		// TODO Auto-generated constructor stub
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		SAXParser parser = null;
@@ -417,8 +402,15 @@ class FeedParser extends DefaultHandler{
 		// TODO Auto-generated method stub
 		super.endElement(uri, localName, qName);
 		if(qName=="item"){
+			Log.e("pkhtag", "xml valie id="+id+"==title="+title);
+			Feed mFeed=new Feed();
+			mFeed.setId(id);
+			mFeed.setTitle(title);
+			mFeed.setDescription(desc);
+			mFeed.setLink(link);
+			parserFeed.add(mFeed);
 			isitemvisited=false;
-			isfetchedOnce=true;
+			isfetchedOnce=false;
 		}
 		if(isitemvisited && !isfetchedOnce){
 			if(qName=="title"){
@@ -456,6 +448,11 @@ class FeedParser extends DefaultHandler{
 		
 		return tempstring.toString();
 		
+	}
+	private ArrayList<Feed> getFeedDataList() {
+		// TODO Auto-generated method stub
+
+		return parserFeed;
 	}
 }
 

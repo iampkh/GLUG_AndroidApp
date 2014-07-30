@@ -22,6 +22,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
@@ -167,8 +168,12 @@ public class ExportBmpService extends Service {
 		  paint.setColor(Color.RED); 
 		  int textSize=getTextSize();
 		  paint.setTextSize(textSize);
+		  paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD_ITALIC));
 		 
-		  canvas.drawText(GlugName, 50,canvas.getHeight()-175, paint); 
+		  Calendar c = Calendar.getInstance();
+		  SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	        String formattedDate = df.format(c.getTime()).replace("-", "_").replace(":", "-");
+		  canvas.drawText(GlugName+"-"+formattedDate, 50,canvas.getHeight()-175, paint); 
 
 		  return alteredBitmap;
 		  

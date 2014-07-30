@@ -2,21 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-   android:background="@drawable/notepaper_bg"
+    android:background="#5882FA"
     android:orientation="vertical" >
-      <RelativeLayout
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="55dp"
         android:background="@drawable/customline" >
 
-      <Button
+        <Button
             android:id="@+id/home_btn"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_height="wrap_content"
-            
+            android:layout_centerVertical="true"
             android:background="@drawable/home_button" />
 
         <Button
@@ -24,9 +24,9 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
             android:background="@drawable/info_button"
             android:text=" " />
 
@@ -41,54 +41,20 @@
             android:textColor="@color/black" />
     </RelativeLayout>
 
-    
-
-    
-
-
-    <TextView
-        android:background="@drawable/search_box"
-        android:id="@+id/recent_scroll_text"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        
-        android:layout_marginTop="70dp"
-        android:duplicateParentState="true"
-        android:ellipsize="marquee"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="55dp"
-        android:paddingTop="5dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:gravity="center_vertical|center_horizontal"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:scrollHorizontally="true"
-        android:singleLine="true"
-        android:text="@string/no_recent_feed"
-        android:textColor="@color/black"
-        android:textSize="15sp" >
-        <requestFocus android:focusable="true" android:focusableInTouchMode="true"
- 		      android:duplicateParentState="true" />
-
-</TextView>
-    
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginLeft="34dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/recent_scroll_text" >
-		
+        android:layout_below="@+id/recent_scroll_text"
+        android:layout_marginTop="10dp"
+         >
     </android.support.v4.view.ViewPager>
 
     <Button
         android:id="@+id/leftBtn"
         android:layout_width="30dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="35dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:background="@drawable/left_pager_btn" />
@@ -97,8 +63,8 @@
         android:id="@+id/rightBtn"
         android:layout_width="30dp"
         android:layout_height="50dp"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:background="@drawable/right_pager_btn" />
 
     <LinearLayout
@@ -110,5 +76,25 @@
         android:layout_toRightOf="@+id/leftBtn"
         android:orientation="vertical" >
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/recent_scroll_text"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/search_box"
+        android:duplicateParentState="true"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:paddingTop="5dp"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="@string/no_recent_feed"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
 
 </RelativeLayout>

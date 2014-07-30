@@ -2,22 +2,182 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/white_bordre"
+    
     android:orientation="vertical" >
+    <ImageView android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:background="@drawable/higres_glug_icon"/>
     
 	<ScrollView
 	    android:id="@+id/scrollView1"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-    	android:layout_marginLeft="25dp"
+    	android:layout_marginLeft="5dp"
     	android:layout_marginRight="5dp"
-    	android:layout_marginBottom="5dp" >
-
-		<WebView
-		    android:id="@+id/webView1"
+    	android:layout_marginTop="15dp"
+    	android:layout_marginBottom="15dp"
+    	 >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+     android:orientation="vertical" >
+	
+		<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:typeface="normal"
+	    android:textSize="16sp"
+	    android:textStyle="bold"
+	    android:text="Gnu/Linux Users Group is a Not-for-Profit-Organization which aims at :" />
+		
+		<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:typeface="normal"
+	    android:textSize="14sp"
+	    android:textStyle="bold"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginTop="10dp"
+	    android:text="1. Creating awareness on GNU / Linux Operating System and Free Software" />
+		<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:typeface="normal"
+	    android:textSize="14sp"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginTop="10dp"
+	    android:textStyle="bold"
+	    android:text="2. Delivering for free, various flavours of latest and old versions of GNU / Linux." />
+		<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:typeface="normal"
+	    android:textSize="14sp"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginTop="10dp"
+	    android:textStyle="bold"
+	    android:text="3. Conducting Meet-ups with those who have interest to know about Gnu / Linux and Free Software (Anyone can join the meetup)." />
+		<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginTop="10dp"
+	    android:typeface="normal"
+	    android:textSize="14sp"
+	    android:textStyle="bold"
+	    android:text="4. Conducting Workshops on Free Software / GNU / Linux tools /Programming with GNU/Linux,etc.." />
+		<ImageView 
 		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content" />
+		    android:layout_height="25dp"
+		    android:background="@drawable/customline"/>
+		<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginTop="10dp"
+	    android:typeface="normal"
+	    android:textSize="14sp"
+	    android:textStyle="bold"
+	    android:text="We are a Technical + Philosophical group, where we care about the Philosophy of Free Software and Freedom / FreeSpeech over the Internet. We believe that Technology should not be restricted only to few people. It should reach million and should give users every Freedom." />
+			<ImageView 
+		    android:layout_width="match_parent"
+		    android:layout_height="25dp"
+		    android:background="@drawable/customline"/>
+		
+		<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginTop="10dp"
+	    android:typeface="normal"
+	    android:textSize="14sp"
+	    android:textStyle="bold"
+	    android:text="We live in a Society, and not contributing to a society is not fair. As they give things for us to live,sustain and grow then why not spend few minutes to contribute back?" />
+			<ImageView 
+		    android:layout_width="match_parent"
+		    android:layout_height="25dp"
+		    android:background="@drawable/customline"/>
+		<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginTop="10dp"
+	    android:typeface="normal"
+	    android:textSize="16sp"
+	    android:textStyle="bold"
+	    android:text="Gnu / Linux Users Group also called as 'GLUG' in short is run by group of volunteers." />
+		<ImageView 
+		    android:layout_width="match_parent"
+		    android:layout_height="2dp"
+		    android:background="@drawable/customline"/>
+			<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginTop="10dp"
+	    android:typeface="normal"
+	    android:textSize="14sp"
+	    android:textStyle="bold"
+	    android:text="We mean Humanity, We mean Freedom so We mean Gnu / Linux and Free Software. We are Social and Friendly ." />
+			
+		 <ImageView 
+		    android:layout_width="match_parent"
+		    android:layout_height="25dp"
+		    android:background="@drawable/customline"/>
+		 <TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginTop="10dp"
+	    android:typeface="normal"
+	    android:textSize="14sp"
+	    android:textStyle="italic"
+	    android:text="Contact : \n 1.Prasanna Venkatesh \n\t- prasmailme@gmail.com \n 2.Karkee\n\t- ukarkee@gmail.com \n 3.SyedKhaleel \n\t- jskcse4@gmail.com \n 4.Vikneshwaran \n\t- vikneshwaran.u@gmail.com \n 5.Suvedha \n\t- suvedhahere@gmail.com" />
+		 <ImageView 
+		    android:layout_width="match_parent"
+		    android:layout_height="25dp"
+		    android:background="@drawable/customline"/>
+		  <TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="#000000"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginTop="10dp"
+	    android:layout_gravity="center_vertical|center_horizontal"
+	    android:typeface="normal"
+	    android:background="@android:drawable/editbox_background"
+	    android:textSize="14sp"
+	    android:textStyle="italic"
+	    android:text="Our Facebook Page :- \n Pondichery :\n\t http://www.facebook.com/puduvaiglug \n\n Villupuram : \n\t http://www.facebook.com/fsftnvillupuram"/>
+	</LinearLayout>	
 
 	</ScrollView>
 
-
+	
 </LinearLayout>

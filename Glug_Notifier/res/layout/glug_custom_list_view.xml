@@ -2,29 +2,32 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="70dp"
+    android:layout_height="90dp"
     android:orientation="horizontal"
     android:showDividers="middle"
-    android:layout_marginLeft="20dp"
-    android:background="@drawable/customline"   
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@android:drawable/editbox_background"
     android:gravity="center">
 
     <!-- Dummy text view that will display the name of a random country. -->
-    <TextView android:id="@android:id/text1"
+    <TextView android:id="@+id/feedText"
         style="?android:textAppearanceMedium"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
+        android:textSize="14sp"
         android:ellipsize="marquee"
         android:maxLines="2"
+        android:text="Feed Title"
         android:paddingLeft="10dp" />
 
     <!-- A button that, when pressed, will delete this list item row from its container. -->
-    <ImageButton android:id="@+id/delete_button"
+    <ImageView android:id="@+id/iconBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/custom_list_x_btn"
+        android:background="@drawable/glug_icon"
         android:layout_marginLeft="10dp"
         android:contentDescription="@string/action_remove_item" />
 

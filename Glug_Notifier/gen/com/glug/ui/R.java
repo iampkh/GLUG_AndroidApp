@@ -27,39 +27,39 @@ public final class R {
     public static final class drawable {
         public static final int camlogo=0x7f020000;
         public static final int custom_button=0x7f020001;
-        public static final int custom_list_x_btn=0x7f020002;
-        public static final int customline=0x7f020003;
-        public static final int glug_bg=0x7f020004;
-        public static final int glug_icon=0x7f020005;
-        public static final int home_button=0x7f020006;
-        public static final int info_button=0x7f020007;
-        public static final int left_pager_btn=0x7f020008;
-        public static final int notepaper_bg=0x7f020009;
-        public static final int old_button=0x7f02000a;
-        public static final int right_pager_btn=0x7f02000b;
-        public static final int search_box=0x7f02000c;
-        public static final int top_head_bg=0x7f02000d;
+        public static final int customline=0x7f020002;
+        public static final int glug_icon=0x7f020003;
+        public static final int higres_glug_icon=0x7f020004;
+        public static final int home_button=0x7f020005;
+        public static final int info_button=0x7f020006;
+        public static final int left_pager_btn=0x7f020007;
+        public static final int old_button=0x7f020008;
+        public static final int right_pager_btn=0x7f020009;
+        public static final int search_box=0x7f02000a;
+        public static final int top_head_bg=0x7f02000b;
+        public static final int white_bordre=0x7f02000c;
     }
     public static final class id {
-        public static final int action_settings=0x7f090012;
+        public static final int action_settings=0x7f090013;
         public static final int camBttn=0x7f090003;
-        public static final int container=0x7f090009;
-        public static final int delete_button=0x7f090007;
-        public static final int frameContainer=0x7f090008;
+        public static final int delete_button=0x7f090008;
+        public static final int feedList=0x7f090009;
+        public static final int feedText=0x7f090006;
         public static final int gallery=0x7f090002;
-        public static final int glugHomeText=0x7f09000c;
-        public static final int home_btn=0x7f09000a;
-        public static final int info=0x7f09000b;
-        public static final int leftBtn=0x7f09000f;
-        public static final int recent_scroll_text=0x7f09000d;
-        public static final int rightBtn=0x7f090010;
+        public static final int glugHomeText=0x7f09000d;
+        public static final int home_btn=0x7f09000b;
+        public static final int iconBtn=0x7f090007;
+        public static final int info=0x7f09000c;
+        public static final int leftBtn=0x7f090010;
+        public static final int recent_scroll_text=0x7f09000f;
+        public static final int relativeLayout1=0x7f09000a;
+        public static final int rightBtn=0x7f090011;
         public static final int scrollView1=0x7f090000;
-        public static final int textView1=0x7f090004;
-        public static final int textView2=0x7f090005;
-        public static final int textView3=0x7f090006;
+        public static final int textView1=0x7f090001;
+        public static final int textView2=0x7f090004;
+        public static final int textView3=0x7f090005;
         public static final int viewPager=0x7f09000e;
-        public static final int webView1=0x7f090001;
-        public static final int webdisplay=0x7f090011;
+        public static final int webdisplay=0x7f090012;
     }
     public static final class layout {
         public static final int glug_about_us_fragment=0x7f030000;

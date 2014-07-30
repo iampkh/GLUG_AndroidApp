@@ -2,11 +2,12 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="70dp"
+    android:layout_height="100dp"
     android:orientation="horizontal"
     android:showDividers="middle"
-    android:layout_marginLeft="40dp"
-    android:background="@drawable/customline"   
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@android:drawable/editbox_background"   
     android:gravity="center">
 
     <!-- Dummy text view that will display the name of a random country. -->
@@ -24,7 +25,7 @@
     <ImageButton android:id="@+id/delete_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/custom_list_x_btn"
+        android:background="@drawable/glug_icon"
         android:layout_marginLeft="10dp"
         android:contentDescription="@string/action_remove_item" />
 

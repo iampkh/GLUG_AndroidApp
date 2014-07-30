@@ -1,6 +1,13 @@
 package com.glug.ui;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.NetworkInfo.State;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -15,6 +22,7 @@ import android.widget.TextView;
 
 import com.glug.adapter.ViewPagerAdapter;
 import com.glug.db.DataBase;
+import com.glug.service.MultipleDataFetchService;
 
 public class GlugNotifierActivity extends FragmentActivity implements
 		OnClickListener {
@@ -24,6 +32,70 @@ public class GlugNotifierActivity extends FragmentActivity implements
 	ViewPager mViewPager;
 	ViewPagerAdapter mViewPagerAdapter;
 	DataBase mDatabase;
+	 public boolean isNetworkPresent=false;
+	 
+	 @Override
+		protected void onStart() {
+			// TODO Auto-generated method stub
+			super.onStart();
+			isNetworkPresent=isNetWorkAvailable();
+			
+		}
+	 @Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		 boolean mDBConatainsData=false;
+		 mDatabase.openDB();
+		// Adding fragments to the view pager
+			addFragments();
+			// registering page change listener for viewpager
+			pageChangeListener();
+		 if((mDatabase.getFeedsCount(DataBase.MAIN_TABLE_NAME)>0)){
+			 mDBConatainsData=true;
+		 }else{
+			 mDBConatainsData=false;
+		 }
+		 if(!mDBConatainsData ){
+		 if(isNetworkPresent){
+/*			Intent intent = new Intent(getApplicationContext(),
+					DataFetchService.class);
+
+			startService(intent);*/
+			 MultipleDataFetchService fetchallData=new MultipleDataFetchService(this,mViewPagerAdapter);
+				fetchallData.startFetchingData();
+				}else{
+					AlertDialog.Builder builder=new AlertDialog.Builder(this);
+					builder.setTitle("Need to fetch data from server");
+					builder.setMessage("1.'OK' will switch on the Mobile data \n2. 'Cancel' to close the alert Dialog");
+					builder.create();
+					builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub 
+							startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+						}
+					});
+					builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+							//startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+						}
+					});
+					
+					
+					builder.show();
+				}}
+		super.onResume();
+	}
+	 @Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		 mDatabase.closeDB();
+		super.onPause();
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +125,7 @@ public class GlugNotifierActivity extends FragmentActivity implements
 					+ mDatabase.getFeed(DataBase.MAIN_TABLE_NAME,
 							recentCursor.getCount() - 1).getLink() + "]";
 		}
-		mDatabase.closeDB();
+		
 		// ending database creation
 		mScrollTextView = (TextView) findViewById(R.id.recent_scroll_text);
 		if (scrollText1 != null && !scrollText1.replace(" ", "").equals("")) {
@@ -79,13 +151,42 @@ public class GlugNotifierActivity extends FragmentActivity implements
 		mInfoButton.setOnClickListener(this);
 		
 		mHomeButton.setBackgroundResource(R.drawable.camlogo);
-		// Adding fragments to the view pager
-		addFragments();
-		// registering page change listener for viewpager
-		pageChangeListener();
 		
 		
+		/*MultipleDataFetchService fetchallData=new MultipleDataFetchService(this);
+		fetchallData.startFetchingData();*/
 		
+	}
+	private boolean isNetWorkAvailable() {
+		// TODO Auto-generated method stub
+
+		
+		
+		ConnectivityManager conMan = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+		//mobile
+		State mobile = conMan.getNetworkInfo(0).getState();
+
+		//wifi
+		State wifi = conMan.getNetworkInfo(1).getState();
+
+
+		if (mobile == NetworkInfo.State.CONNECTED || mobile == NetworkInfo.State.CONNECTING ||wifi == NetworkInfo.State.CONNECTED || wifi == NetworkInfo.State.CONNECTING) 
+		{
+		    //mobile 
+			return true;
+		}
+		else if (mobile == NetworkInfo.State.DISCONNECTED && mobile == NetworkInfo.State.DISCONNECTING && wifi == NetworkInfo.State.DISCONNECTED && wifi == NetworkInfo.State.DISCONNECTING) 
+		{
+		    //wifi
+			return false;
+		}
+		return false;
+		
+		
+
+		
+
 	}
 
 	// Adding fragment to the fragmentActivity using ViewPager
@@ -121,7 +222,7 @@ public class GlugNotifierActivity extends FragmentActivity implements
 				}else if(mViewPager.getCurrentItem()==2){
 					mLeftButton.setVisibility(ViewGroup.VISIBLE);
 					mRightButton.setVisibility(ViewGroup.GONE);
-					mTitleTextView.setText("Contributors");
+					mTitleTextView.setText("SnapShot");
 					mHomeButton.setBackgroundResource(R.drawable.home_button);
 				}
 

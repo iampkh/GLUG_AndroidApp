@@ -50,6 +50,7 @@
         </activity>
         <service android:name="com.glug.service.ExportBmpService"></service>
         <activity android:name="GalleryActivities"></activity>
+        <service android:name="com.glug.service.MultipleDataFetchService"></service>
     </application>
 
 </manifest>

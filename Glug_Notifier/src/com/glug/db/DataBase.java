@@ -48,7 +48,7 @@ public class DataBase {
 	public void openDB() {
 		// TODO Auto-generated method stub
 		sdb=helpDB.getWritableDatabase();
-		Log.d("pkhtag","pkh open db called");
+		//Log.d("pkhtag","pkh open db called");
 	}
 
 	public void addFeed(String TABLE_NAME,Feed feed) {
@@ -62,11 +62,11 @@ public class DataBase {
 
 		// Inserting Row
 		sdb.insert(TABLE_NAME, null, values);
-		Log.d("pkhtag", "pkh add feed ======"+values);
+		//Log.d("pkhtag", "pkh add feed ======"+values);
 		
 		
 		// closeDB();
-		//Log.d("pkhtag", "pkh add feed ======"+getFeedsCount(TABLE_NAME));
+		////Log.d("pkhtag", "pkh add feed ======"+getFeedsCount(TABLE_NAME));
 
 	}
 /*	public ArrayList<String> getTableNames(){
@@ -102,7 +102,7 @@ public class DataBase {
 			 allcursor.moveToFirst();
 		do{
 			 idlist.add(allcursor.getString(index));
-			 Log.d("pkhtag","pkh all id value is="+allcursor.getString(index)); 
+			 //Log.d("pkhtag","pkh all id value is="+allcursor.getString(index)); 
 			// index++;
 		 }	 while(allcursor.moveToNext());	
 		
@@ -113,10 +113,10 @@ public class DataBase {
 				new String[] { String.valueOf(idlist.get(pos)) }, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
-		/*Log.d("pkhtag", "pkh id="+cursor.getString(0));
-		Log.d("pkhtag", "pkh tit="+cursor.getString(1));
-		Log.d("pkhtag", "pkh lin="+cursor.getString(2));
-		Log.d("pkhtag", "pkh des="+cursor.getString(3));*/
+		/*//Log.d("pkhtag", "pkh id="+cursor.getString(0));
+		//Log.d("pkhtag", "pkh tit="+cursor.getString(1));
+		//Log.d("pkhtag", "pkh lin="+cursor.getString(2));
+		//Log.d("pkhtag", "pkh des="+cursor.getString(3));*/
 
 		Feed feed = new Feed(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3));
 		// return contact
@@ -153,6 +153,9 @@ public class DataBase {
 	        // closeDB();
 	        return feedlist;
 	    }
+	 public void  deleteAllFeed(String TABLE_NAME){
+		 sdb.rawQuery("delete from "+ TABLE_NAME, null);
+	 }
 	 public List<Feed> getAllFeedReversed(String TABLE_NAME){
 		// openDB();
 		 List<Feed> reverFeedLIst=new ArrayList<Feed>();
@@ -170,25 +173,25 @@ public class DataBase {
 	 }
 /*	 public Cursor getLastRow(String TABLE_NAME){
 		// openDB();
-		 Log.d("pkhtag", "pkh last row 1st");
+		 //Log.d("pkhtag", "pkh last row 1st");
 		 Cursor allcursor=getCursor(TABLE_NAME);
 		
-		 Log.d("pkhtag", "pkh last row 2st");
+		 //Log.d("pkhtag", "pkh last row 2st");
 		 ArrayList<String> idlist=new ArrayList<String>();
 		 int index=0;
 		 if(allcursor.getCount()<1){
-			 Log.d("pkhtag", "pkh cursor is empty=+"+allcursor.getCount());
+			 //Log.d("pkhtag", "pkh cursor is empty=+"+allcursor.getCount());
 			 return null;
 		 }
 		 while(allcursor.moveToNext()){
-			 Log.d("pkhtag", "pkh cursor is empty while loop=+"+allcursor.getString(index));
+			 //Log.d("pkhtag", "pkh cursor is empty while loop=+"+allcursor.getString(index));
 			 idlist.add(allcursor.getString(index));
 			 index++;
 		 }
 	
 		 Cursor cursor;
 		 
-			 Log.d("pkhtag", "pkh get last row not null");
+			 //Log.d("pkhtag", "pkh get last row not null");
 		  cursor = sdb.query(TABLE_NAME, new String[] { KEY_TITLE,KEY_LINK, KEY_DESC}, KEY_ID + "=?",	new String[] { String.valueOf(idlist.get(idlist.size()-1)) }, null, null, null, null);
 		
 		 		    
@@ -219,7 +222,7 @@ public class DataBase {
 	     //Cursor cursor=   sdb.rawQuery(countQuery, null);
 		 Cursor cursor=sdb.query(TABLE_NAME, null, null, null, null, null, null);
 	//	 // closeDB();
-		 Log.d("pkhtag", "pkh inside db get cursor ="+cursor);
+		 //Log.d("pkhtag", "pkh inside db get cursor ="+cursor);
 	     return cursor;
 	 
 	 }
@@ -241,7 +244,7 @@ public class DataBase {
 		/*public HelperDB(Context context,ArrayList<String> list) {
 			
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);	
-			Log.d("pkhtag", "pkh create helper db feed ======"+list.size());
+			//Log.d("pkhtag", "pkh create helper db feed ======"+list.size());
 			this.list=list;
 			
 			// TODO Auto-generated constructor stub
@@ -250,14 +253,14 @@ public class DataBase {
 		public HelperDB(Context context) {
 			
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);		
-			Log.d("pkhtag", "pkh constructor context only called ======");
+			//Log.d("pkhtag", "pkh constructor context only called ======");
 			
 			// TODO Auto-generated constructor stub
 		}
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			// TODO Auto-generated method stub
-			//Log.d("pkhtag", "pkh create table feed ======");
+			////Log.d("pkhtag", "pkh create table feed ======");
 			//creating Table for Main List
 				String CREATE_CONTACTS_TABLE = "CREATE TABLE IF NOT EXISTS "+MAIN_TABLE_NAME+"("+KEY_ID+" TEXT,"+KEY_TITLE+" TEXT,"+KEY_LINK+" TEXT,"+KEY_DESC+" TEXT"+")";
 				db.execSQL(CREATE_CONTACTS_TABLE);

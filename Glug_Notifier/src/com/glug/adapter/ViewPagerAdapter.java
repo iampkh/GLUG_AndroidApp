@@ -44,4 +44,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
 		// TODO Auto-generated method stub
 		return mTotalPage;
 	}
+	
+	@Override
+	public int getItemPosition(Object object) {
+		// TODO Auto-generated method stub
+		return POSITION_NONE;
+	}
 }

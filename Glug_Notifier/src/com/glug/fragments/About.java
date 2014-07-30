@@ -28,12 +28,12 @@ public class About extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View mainView = inflater.inflate(R.layout.glug_about_us_fragment, container, false);
-
+/*
         WebView webView = (WebView) mainView.findViewById(R.id.webView1);
         webView.getSettings().setJavaScriptEnabled(true); 
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("file:///android_asset/About/About.htm");
-
+*/
     return mainView;
 	}
 
